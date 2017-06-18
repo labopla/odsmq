@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
+apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 25
@@ -30,4 +31,15 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    //dagger for dependency injection
+    compile 'com.google.dagger:dagger:2.10'
+    apt 'com.google.dagger:dagger-compiler:2.10'
+    provided 'javax.annotation:jsr250-api:1.0'
+    //rxjava2 for Reactive Java
+    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+    //retrofit for HTTP Client
+    compile 'com.squareup.retrofit:retrofit:1.6.1'
+    //orma for Object Relational Mapper
+    compile 'com.github.gfx.android.orma:orma:4.2.3'
+    annotationProcessor 'com.github.gfx.android.orma:orma-processor:4.2.3'
 }
