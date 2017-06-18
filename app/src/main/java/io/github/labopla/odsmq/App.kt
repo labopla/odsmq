@@ -6,9 +6,13 @@ import javax.inject.Singleton
 
 
 
-class App(mApplication: Application) : Application() {
+class App() : Application() {
 
-    private var mApplication: Application? = mApplication
+    private var mApplication: Application? = null
+
+    fun App(mApplication: Application){
+        this.mApplication = mApplication
+    }
 
     @Provides
     @Singleton
