@@ -37,8 +37,15 @@ dependencies {
     provided 'javax.annotation:jsr250-api:1.0'
     //rxjava2 for Reactive Java
     compile 'io.reactivex.rxjava2:rxjava:2.1.0'
-    //retrofit for HTTP Client
-    compile 'com.squareup.retrofit:retrofit:1.6.1'
+    // Retrofit
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    // OkHttp
+    compile 'com.squareup.okhttp3:okhttp:3.8.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    // Gson
+    compile 'com.google.code.gson:gson:2.8.0'
     //orma for Object Relational Mapper
     compile 'com.github.gfx.android.orma:orma:4.2.3'
     annotationProcessor 'com.github.gfx.android.orma:orma-processor:4.2.3'
