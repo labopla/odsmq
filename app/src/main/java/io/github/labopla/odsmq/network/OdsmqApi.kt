@@ -2,9 +2,10 @@ package io.github.labopla.odsmq.network
 
 import io.github.labopla.odsmq.models.Quest
 import io.reactivex.Observable
-import retrofit.http.*
+import retrofit2.http.*
 
-interface RetrofitApi {
+
+interface OdsmqApi {
 
     @GET("quests/getAll")
     fun getAllQuests(): Observable<MutableList<Quest>>
