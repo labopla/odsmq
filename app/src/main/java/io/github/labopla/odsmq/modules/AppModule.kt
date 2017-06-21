@@ -1,19 +1,10 @@
 package io.github.labopla.odsmq.modules
 
-import android.app.Application
-import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
+import android.content.Context
+import com.github.salomonbrys.kodein.Kodein
+import com.github.salomonbrys.kodein.bind
+import com.github.salomonbrys.kodein.instance
 
-@Module
-class AppModule(app: Application) {
-
-    private val mApplication = app
-
-    @Provides
-    @Singleton
-    fun provideApplication(): Application{
-        return this.mApplication
-    }
-
+fun appModule(context: Context) = Kodein.Module {
+    bind<Context>() with instance(context)
 }

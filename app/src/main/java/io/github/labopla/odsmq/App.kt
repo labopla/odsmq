@@ -1,33 +1,23 @@
 package io.github.labopla.odsmq
 
 import android.app.Application
-import dagger.Provides
-import io.github.labopla.odsmq.components.AppComponent
-import io.github.labopla.odsmq.modules.ApiModule
-import io.github.labopla.odsmq.modules.AppModule
-import javax.inject.Singleton
+import com.github.salomonbrys.kodein.*
+import io.github.labopla.odsmq.modules.*
+import io.github.labopla.odsmq.modules.debugModule
+import io.github.labopla.odsmq.modules.releaseModule
 
+class App() : Application() , KodeinAware{
 
-
-class App() : Application() {
-
-    private var mAppComponent: AppComponent? = null
+    override val kodein: Kodein by  Kodein.lazy {
+        import(appModule(this@App))
+        when(BuildConfig.FLAVOR){
+            "debug" -> import(debugModule)
+            "release" -> import(releaseModule)
+        }
+    }
 
     override fun onCreate() {
         super.onCreate()
-        initializeInjector()
-    }
-
-    private fun initializeInjector(){
-        /*
-        mAppComponent = DaggerAppComponent.builder()
-                .appModule(AppModule(this))
-                .build()
-                */
-    }
-
-    fun getAppComponent(): AppComponent?{
-        return mAppComponent
     }
 
 }

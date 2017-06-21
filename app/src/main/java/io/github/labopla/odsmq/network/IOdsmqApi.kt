@@ -5,7 +5,7 @@ import io.reactivex.Observable
 import retrofit2.http.*
 
 
-interface OdsmqApi {
+interface IOdsmqApi {
 
     @GET("quests/getAll")
     fun getAllQuests(): Observable<MutableList<Quest>>
@@ -14,10 +14,9 @@ interface OdsmqApi {
     fun createQuest(@Query("quest") quest: Quest): Observable<Quest>
 
     @DELETE("quests/delete")
-    fun deleteQuest(@Query("id") questId: Long): Observable<Quest>
+    fun deleteQuest(@Query("quest") quest: Quest): Observable<Quest>
 
     @POST("quests/accept")
-    fun acceptQuest(@Query("id") questId: Long): Observable<Quest>
-
+    fun acceptQuest(@Query("quest") quest: Quest): Observable<Quest>
 
 }
