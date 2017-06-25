@@ -14,9 +14,10 @@ interface IOdsmqApi {
     fun createQuest(@Query("quest") quest: Quest): Observable<Quest>
 
     @DELETE("quests/delete")
-    fun deleteQuest(@Query("quest") quest: Quest): Observable<Quest>
+    fun deleteQuest(@Query("id") questId: Long): Observable<Quest>
 
     @POST("quests/accept")
-    fun acceptQuest(@Query("quest") quest: Quest): Observable<Quest>
+    fun acceptQuest(@Query("id") questId: Long): Observable<Quest>
+
 
 }
