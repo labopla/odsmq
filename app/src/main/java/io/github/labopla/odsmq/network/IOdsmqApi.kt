@@ -4,7 +4,9 @@ import io.github.labopla.odsmq.models.Quest
 import io.reactivex.Observable
 import retrofit2.http.*
 
-
+/**
+ * OdsmqApiのインターフェース
+ */
 interface IOdsmqApi {
 
     @GET("quests/getAll")
@@ -18,6 +20,5 @@ interface IOdsmqApi {
 
     @POST("quests/accept")
     fun acceptQuest(@Query("id") questId: Long): Observable<Quest>
-
 
 }

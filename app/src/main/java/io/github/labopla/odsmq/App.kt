@@ -11,10 +11,7 @@ import io.github.labopla.odsmq.network.releaseModule
 class App() : Application(), KodeinAware {
 
     override val kodein by Kodein.lazy{
-        when(BuildConfig.FLAVOR){
-            "debug" -> import(debugModule)
-            "release" -> import(releaseModule)
-        }
+        import(debugModule)
     }
 
     override fun onCreate() {

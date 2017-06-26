@@ -12,33 +12,36 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class OdsmqApi : IOdsmqApi{
-    override fun acceptQuest(questId: Long): Observable<Quest> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+/**
+ * OdsmqApiの実装クラス
+ */
+class OdsmqApi : IOdsmqApi {
+    override fun acceptQuest(questId: Long): Observable<Quest> = Observable.just(
+            Quest(0, Category.a, User(0, "pipikapu", "pipikapu@gmail.com"), 201708051245, "detail", "rewards", Status.WANTED)
+    )
 
-    override fun createQuest(quest: Quest): Observable<Quest> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun createQuest(quest: Quest): Observable<Quest> = Observable.just(
+            Quest(3, Category.a, User(0, "pipikapu", "pipikapu@gmail.com"), 201708051245, "detail", "rewards", Status.WANTED)
+    )
 
-    override fun deleteQuest(questId: Long): Observable<Quest> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun deleteQuest(questId: Long): Observable<Quest> = Observable.just(
+            Quest(4, Category.a, User(0, "pipikapu", "pipikapu@gmail.com"), 201708051245, "detail", "rewards", Status.WANTED)
+    )
 
-    override fun getAllQuests(): Observable<MutableList<Quest>> = Observable.just (
-        mutableListOf(
-                Quest(0, Category.a, User(0, "pipikapu", "pipikapu@gmail.com"), 201708051245, "detail", "rewards", Status.WANTED),
-                Quest(1, Category.b, User(1, "mimivon", "mimivon@gmail.com"), 201705021222, "detail", "rewards", Status.CLEARED),
-                Quest(2, Category.a, User(0, "pipikapu", "pipikapu@gmail.com"), 201705091832, "detail", "rewards", Status.CLOSED)
-        )
+    override fun getAllQuests(): Observable<MutableList<Quest>> = Observable.just(
+            mutableListOf(
+                    Quest(0, Category.a, User(0, "pipikapu", "pipikapu@gmail.com"), 201708051245, "detail", "rewards", Status.WANTED),
+                    Quest(1, Category.b, User(1, "mimivon", "mimivon@gmail.com"), 201705021222, "detail", "rewards", Status.CLEARED),
+                    Quest(2, Category.a, User(0, "pipikapu", "pipikapu@gmail.com"), 201705091832, "detail", "rewards", Status.CLOSED)
+            )
     )
 }
 
-val debugModule = Kodein.Module{
+val debugModule = Kodein.Module {
     bind<IOdsmqApi>() with instance(OdsmqApi())
 }
 
-val releaseModule = Kodein.Module{
+val releaseModule = Kodein.Module {
     bind<IOdsmqApi>() with instance(Retrofit.Builder()
             .baseUrl("TODO")
             .addConverterFactory(GsonConverterFactory.create())
